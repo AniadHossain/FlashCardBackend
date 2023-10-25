@@ -1,0 +1,21 @@
+services:
+  postgress:
+    container_name: postgress-flashcards
+    image: postgres
+    environment:
+      POSTGRES_USER: aniad
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: flashcard_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres:/var/lib/postgres/data
+    networks:
+      - spring-boot-network
+
+volumes:
+  postgres:
+
+networks:
+  spring-boot-network:
+    driver: bridge
