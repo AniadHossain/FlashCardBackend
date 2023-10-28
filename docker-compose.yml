@@ -1,6 +1,6 @@
 services:
   postgress:
-    container_name: postgress-flashcards
+    container_name: postgres-flashcards
     image: postgres
     environment:
       POSTGRES_USER: aniad
@@ -9,7 +9,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - postgres:/var/lib/postgres/data
+      - postgres:/var/lib/postgresql/data
     networks:
       - spring-boot-network
 
