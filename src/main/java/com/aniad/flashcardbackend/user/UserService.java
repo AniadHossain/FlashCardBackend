@@ -2,6 +2,7 @@ package com.aniad.flashcardbackend.user;
 
 import com.aniad.flashcardbackend.auth.UserAuthorizationRequest;
 import com.aniad.flashcardbackend.auth.UserRegistrationRequest;
+import com.aniad.flashcardbackend.deck.Deck;
 import com.aniad.flashcardbackend.exception.ExistingUserException;
 import com.aniad.flashcardbackend.exception.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 @Service
@@ -25,6 +27,11 @@ public class UserService {
         return repo.findByEmail(email)
                 .map(userDtoMapper)
                 .orElseThrow(() -> new UserNotFoundException("user with email %s not found".formatted(email)));
+    }
+
+    public User findUserById(long id){
+        return repo.findById(id)
+                .orElseThrow(() -> new UserNotFoundException("user with id %s not found".formatted(id)));
     }
 
 
@@ -49,7 +56,6 @@ public class UserService {
                 .lastName(lastName)
                 .email(email)
                 .password(password)
-                .decks(new ArrayList<>())
                 .build();
 
         repo.save(user);
@@ -65,4 +71,5 @@ public class UserService {
 
         return encoder.matches(password, user.getPassword());
     }
+
 }
