@@ -27,7 +27,7 @@ public class User {
     private String email;
     private String password;
 
-    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,orphanRemoval = true)
     @JsonIgnore
     private List<Deck> decks = new ArrayList<>();
 }

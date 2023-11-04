@@ -1,5 +1,6 @@
 package com.aniad.flashcardbackend.deck;
 
+import com.aniad.flashcardbackend.exception.UserNotFoundException;
 import com.aniad.flashcardbackend.user.User;
 import com.aniad.flashcardbackend.user.UserService;
 import lombok.RequiredArgsConstructor;
@@ -33,7 +34,8 @@ public class DeckService {
     }
 
     public Deck findDeckById(long id) {
-        return repo.findById(id);
+        return repo.findById(id)
+                .orElseThrow(() -> new UserNotFoundException("deck with id %s not found".formatted(id)));
     }
 
     public List<DeckDto> findDecksByUserId(long id){
