@@ -18,7 +18,6 @@ public class UserDtoMapper implements Function<User,UserDto> {
                 .firstName(user.getFirstName())
                 .lastName(user.getLastName())
                 .email(user.getEmail())
-                .decks(user.getDecks())
                 .build();
     }
 }

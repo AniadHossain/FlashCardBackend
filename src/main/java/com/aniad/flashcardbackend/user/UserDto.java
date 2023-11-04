@@ -1,6 +1,6 @@
 package com.aniad.flashcardbackend.user;
 
-import com.aniad.flashcardbackend.deck.Deck;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,6 +15,6 @@ public class UserDto {
     String firstName;
     String lastName;
     String email;
-    List<Deck> decks;
+
 
 }

@@ -12,6 +12,9 @@ public interface UserRepo extends JpaRepository<User,Long> {
     @EntityGraph(value = "User.decks")
     Optional<User> findByEmail(String email);
 
+    @EntityGraph(value = "User.decks")
+    Optional<User> findById(long id);
+
     User findUserByEmail(String email);
 
     boolean existsByEmail(String email);
