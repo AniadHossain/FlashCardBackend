@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -47,11 +46,9 @@ public class DeckService {
     }
 
     public DeckDto deleteDeckById(long id) {
-        Optional<Deck> deck = repo.findById(id);
-        if(deck.isEmpty()){
-            throw new UserNotFoundException("deck with id %s not found".formatted(id));
-        }
-        repo.delete(deck.get());
-        return deckDtoMapper.toDeckDto(deck.get());
+        Deck deck = findDeckById(id);
+
+        repo.delete(deck);
+        return deckDtoMapper.toDeckDto(deck);
     }
 }
