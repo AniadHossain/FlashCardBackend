@@ -22,4 +22,14 @@ public class FlashcardController {
     public  ResponseEntity<List<FlashcardDto>> findFlashcardsByDeck(@PathVariable long id){
         return new ResponseEntity<>(service.findFlashcardsByDeckId(id),HttpStatus.OK);
     }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<FlashcardDto> DeleteFlashcardById(@PathVariable long id){
+        return new ResponseEntity<>(service.deleteFlashcardById(id),HttpStatus.OK);
+    }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<FlashcardDto> UpdateFlashcardById(@PathVariable long id, @RequestBody FlashcardUpdateRequest request){
+        return new ResponseEntity<>(service.updateFlashcardById(id,request),HttpStatus.OK);
+    }
 }

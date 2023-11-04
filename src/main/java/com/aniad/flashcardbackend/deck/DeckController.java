@@ -24,4 +24,8 @@ public class DeckController {
         return new ResponseEntity<>(deckService.findDecksByUserId(id), HttpStatus.OK);
     }
 
+    @DeleteMapping("delete/{id}")
+    public ResponseEntity<DeckDto> deleteDeckById(@PathVariable long id){
+        return new ResponseEntity<>(deckService.deleteDeckById(id), HttpStatus.OK);
+    }
 }

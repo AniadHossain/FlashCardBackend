@@ -44,4 +44,11 @@ public class DeckService {
                 .map(deckDtoMapper)
                 .collect(Collectors.toList());
     }
+
+    public DeckDto deleteDeckById(long id) {
+        Deck deck = findDeckById(id);
+
+        repo.delete(deck);
+        return deckDtoMapper.toDeckDto(deck);
+    }
 }
