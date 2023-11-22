@@ -13,9 +13,9 @@ import java.util.List;
 public class FlashcardController {
     private final FlashcardService service;
 
-    @PostMapping("/create")
-    public ResponseEntity<FlashcardDto> createFlashcard(@RequestBody FlashcardCreationRequest req){
-        return new ResponseEntity<>(service.createFlashcard(req), HttpStatus.OK);
+    @PostMapping("/create/{id}")
+    public ResponseEntity<FlashcardDto> createFlashcard(@RequestBody FlashcardCreationRequest req, @PathVariable long id){
+        return new ResponseEntity<>(service.createFlashcard(req,id), HttpStatus.OK);
     }
 
     @GetMapping("/flashcards/{id}")

@@ -15,8 +15,8 @@ public class FlashcardService {
     private final FlashcardRepo repo;
     private final DeckService deckService;
     private final FlashcardDtoMapper flashcardDtoMapper;
-    public FlashcardDto createFlashcard(FlashcardCreationRequest req) {
-        Deck deck = deckService.findDeckById(req.deckId());
+    public FlashcardDto createFlashcard(FlashcardCreationRequest req,long id) {
+        Deck deck = deckService.findDeckById(id);
 
         Flashcard flashcard = repo.save(Flashcard.builder()
                 .question(req.question())

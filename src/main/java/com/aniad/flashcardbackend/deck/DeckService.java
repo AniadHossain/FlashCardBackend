@@ -17,9 +17,8 @@ public class DeckService {
     private final DeckRepo repo;
     private final UserService userService;
     private final DeckDtoMapper deckDtoMapper;
-    public DeckDto createDeck(DeckCreationRequest req) {
+    public DeckDto createDeck(DeckCreationRequest req, long id) {
         String name = req.name();
-        long id = req.userId();
 
         User user = userService.findUserById(id);
 

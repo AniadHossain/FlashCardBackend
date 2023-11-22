@@ -14,9 +14,9 @@ public class DeckController {
 
     private final DeckService deckService;
 
-    @PostMapping("/create")
-    public ResponseEntity<DeckDto> createDeck(@RequestBody DeckCreationRequest req){
-        return new ResponseEntity<>(deckService.createDeck(req), HttpStatus.OK);
+    @PostMapping("/create/{id}")
+    public ResponseEntity<DeckDto> createDeck(@RequestBody DeckCreationRequest req, @PathVariable long id){
+        return new ResponseEntity<>(deckService.createDeck(req,id), HttpStatus.OK);
     }
 
     @GetMapping("/decks/{id}")
