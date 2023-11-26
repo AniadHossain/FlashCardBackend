@@ -29,12 +29,12 @@ public class UserAuthProvider {
 
     public String createAccessToken(String login){
 
-        return buildToken(login,10 * 1000);
+        return buildToken(login,1200 * 1000);
     }
 
     public String createRefreshToken(String login){
 
-        return buildToken(login,10800000);
+        return buildToken(login,86400000);
     }
 
     private String buildToken(String login,long validity) {

@@ -20,9 +20,11 @@ public class DeckService {
     public DeckDto createDeck(DeckCreationRequest req, long id) {
         String name = req.name();
 
+        if("".equals(name)){
+            throw new IllegalArgumentException("Name of the deck cannot be empty");
+        }
+
         User user = userService.findUserById(id);
-
-
 
         Deck deck = repo.save(Deck.builder()
                 .name(name)

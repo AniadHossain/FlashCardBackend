@@ -1,7 +1,6 @@
 package com.aniad.flashcardbackend.deck;
 
 import com.aniad.flashcardbackend.user.User;
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

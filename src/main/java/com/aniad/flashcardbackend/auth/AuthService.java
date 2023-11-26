@@ -30,10 +30,9 @@ public class AuthService {
             if (sections.length == 2 && "Bearer".equals(sections[0]) && userAuthProvider.validateToken(sections[1]).isAuthenticated()) {
                 String email = userAuthProvider.extractEmail(sections[1]);
                 String accessToken = userAuthProvider.createAccessToken(email);
-                String refreshToken = userAuthProvider.createRefreshToken(email);
                 AuthenticationTokensDto authResponse = AuthenticationTokensDto.builder()
                         .accessToken(accessToken)
-                        .refreshToken(refreshToken)
+                        .refreshToken(sections[1])
                         .expiresAt(userAuthProvider.extractExpiration(accessToken))
                         .build();
                 new ObjectMapper().writeValue(res.getOutputStream(), authResponse);
